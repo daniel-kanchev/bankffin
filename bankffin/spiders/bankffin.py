@@ -12,12 +12,10 @@ class bankffinSpider(scrapy.Spider):
     def parse(self, response):
         now = datetime.now()
         current_year = int(now.strftime("%Y"))
-        print(current_year)
         year = 2000
         month = 1
         while year < current_year:
             while month <= 12:
-                print(month, year)
                 link = f'https://bankffin.kz/ru/articles?year={year}&month={month}'
                 yield response.follow(link, self.parse_month)
                 month += 1
